@@ -1,20 +1,28 @@
-# Build stage
-FROM node:20 as build
+# Frontend Dockerfile (for React app)
 
+# Use an official Node.js image
+FROM node:18-alpine
+
+# Set working directory
 WORKDIR /app
 
+# Copy package.json and package-lock.json
 COPY package*.json ./
+
+# Install dependencies
 RUN npm install
 
+# Copy the rest of the app files
 COPY . .
+
+# Build the React app
 RUN npm run build
 
-# Production stage
-FROM nginx:stable-alpine
+# Install a simple web server to serve the build
+RUN npm install -g serve
 
-COPY --from=build /app/build /usr/share/nginx/html
+# Expose port (e.g., 3000)
+EXPOSE 3000
 
-# Expose port 80
-EXPOSE 80
-
-CMD ["nginx", "-g", "daemon off;"]
+# Start the app
+CMD ["serve", "-s", "build", "-l", "3000"]
