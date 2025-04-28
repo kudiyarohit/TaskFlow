@@ -3,7 +3,7 @@ name: FullStack CI/CD
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   deploy:
