@@ -1,0 +1,181 @@
+:root {
+    --bg-light: linear-gradient(135deg, #dceefc, #f4f9fd);
+    --bg-dark: #1e1e2f;
+    --card-light: white;
+    --card-dark: #2b2b3c;
+    --text-light: #333;
+    --text-dark: #ddd;
+    --btn-light: #007bff;
+    --btn-dark: #4a90e2;
+  }
+  
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: var(--bg-light);
+    transition: background 0.3s;
+  }
+  
+  .container.dark {
+    background: var(--bg-dark);
+  }
+  
+  .card {
+    background: var(--card-light);
+    color: var(--text-light);
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+    transition: background 0.3s, color 0.3s;
+  }
+  
+  .container.dark .card {
+    background: var(--card-dark);
+    color: var(--text-dark);
+  }
+  
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .mode-toggle {
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  /* Input + button */
+  .input-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .input-row input {
+    flex: 1;
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    transition: background 0.3s, color 0.3s;
+  }
+  
+  .container.dark .input-row input {
+    background: #3a3a4e;
+    color: #eee;
+    border-color: #555;
+  }
+  
+  .input-row button {
+    padding: 10px 16px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    background-color: var(--btn-light);
+    color: white;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  
+  .input-row button:hover {
+    background-color: #0056b3;
+  }
+  
+  .container.dark .input-row button {
+    background-color: var(--btn-dark);
+  }
+  
+  .container.dark .input-row button:hover {
+    opacity: 0.8;
+  }
+  
+  /* Task list */
+  .task-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .task-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 14px;
+    margin-bottom: 10px;
+    background-color: #f7fafd;
+    border-radius: 8px;
+    transition: background 0.3s, transform 0.2s;
+  }
+  
+  .container.dark .task-list li {
+    background-color: #3a3a4e;
+  }
+  
+  .task-list li:hover {
+    background-color: #e6f2fb;
+    transform: translateY(-2px);
+  }
+  
+  .container.dark .task-list li:hover {
+    background-color: #4a4a61;
+  }
+  
+  .task-list li.completed span {
+    text-decoration: line-through;
+    color: #aaa;
+  }
+  
+  .task-list button {
+    background: none;
+    border: none;
+    font-size: 18px;
+    color: #ff4d4f;
+    cursor: pointer;
+  }
+  
+  /* Fade‑in animation */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  
+  .fade-in {
+    animation: fadeIn 0.4s ease;
+  }
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url('/images/background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+  }
+  
+
+  .container.dark {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url('/images/dark-background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+  }
