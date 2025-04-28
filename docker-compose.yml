@@ -1,16 +1,24 @@
-version: "3.8"
+version: '3'
 
 services:
   backend:
-    build: ./backend
+    build:
+      context: ./backend
     ports:
-      - "6000:5000"
-    restart: always
+      - "6000:6000"
+    working_dir: /app
+    command: gunicorn app:app --bind 0.0.0.0:6000
+    volumes:
+      - ./backend:/app
 
   frontend:
-    build: ./frontend
+    build:
+      context: ./frontend
     ports:
-      - "80:80"
-    depends_on:
-      - backend
-    restart: always
+      - "3000:3000"
+    working_dir: /app
+    command: npm run start
+    volumes:
+      - ./frontend:/app
+    stdin_open: true
+    tty: true
