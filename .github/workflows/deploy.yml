@@ -21,8 +21,15 @@ jobs:
           key: ${{ secrets.PRIVATE_KEY }}
           script: |
             cd ~/TaskFlow || (mkdir ~/app && cd ~/app && git init && git remote add origin https://github.com/kudiyarohit/TaskFlow.git)
-            git pull origin master
 
+
+            # Reset everything in case of local changes or untracked files
+            git fetch origin
+            git reset --hard origin/master
+            git clean -fd
+
+            # Continue with docker commands
             docker-compose down || true
             docker-compose build
             docker-compose up -d
+
