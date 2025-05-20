@@ -23,7 +23,7 @@ def get_tasks():
             {"id": row[0], "text": row[1], "completed": bool(row[2])}
             for row in tasks
         ])
-
+#####
 @app.route("/tasks", methods=["POST"])
 def add_task():
     data = request.get_json()
